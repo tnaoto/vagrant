@@ -39,6 +39,26 @@ module VagrantPlugins
         Cap::Linux::DockerInstalled
       end
 
+      guest_capability("redhat", "docker_install") do
+        require_relative "cap/redhat/docker_install"
+        Cap::Redhat::DockerInstall
+      end
+
+      guest_capability("redhat", "docker_configure_auto_start") do
+        require_relative "cap/redhat/docker_configure_auto_start"
+        Cap::Redhat::DockerConfigureAutoStart
+      end
+
+      guest_capability("redhat", "docker_configure_vagrant_user") do
+        require_relative "cap/redhat/docker_configure_vagrant_user"
+        Cap::Redhat::DockerConfigureVagrantUser
+      end
+
+      guest_capability("redhat", "docker_start_service") do
+        require_relative "cap/redhat/docker_start_service"
+        Cap::Redhat::DockerStartService
+      end
+
       provisioner(:docker) do
         require_relative "provisioner"
         Provisioner
